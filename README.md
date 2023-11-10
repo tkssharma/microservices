@@ -17,4 +17,3 @@ $ cd nodejs-microservices-2023
 $ pnpm i
 
 ```
->>>>>>> develop
