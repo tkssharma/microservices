@@ -17,6 +17,37 @@ Playlist covering all about Node JS Microservices 🚀🚀
 | Building RestFul API Microservice using Express Typescript #09  |  | 
 
 
+## Module 01.1 [Nov 2023]
+
+
+| Item              | Video |
+| :---------------- | :------: | 
+| Building Microservices with The Twelve-Factor App  |     |  
+
+
+## Module 02 [Nov 2023]
+
+
+| Item              | Video |
+| :---------------- | :------: | 
+| Deploying services to AWS using AWS CDK   |     |  
+
+
+## Module 03 [Nov 2023]
+
+
+| Item              | Video |
+| :---------------- | :------: | 
+| Building Microservice using CQRS/Event Driven Arch  |     |  
+
+## Module 04 [Nov 2023]
+
+
+| Item              | Video |
+| :---------------- | :------: | 
+| Building Microservice in serverless and container environment |     |  
+
+
 ![](https://i.ytimg.com/vi/aP55ZJNBM38/maxresdefault.jpg)
 ## How To Use
 
