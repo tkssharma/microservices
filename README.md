@@ -23,6 +23,16 @@ Playlist covering all about Node JS Microservices 🚀🚀
 | Item              | Video |
 | :---------------- | :------: | 
 | Building Microservices with The Twelve-Factor App  |     |  
+| 1. Github Branching and Deployment from monorepo Codebase |     |  
+| 2. Managing dependancies for Monorepo Microservices |     |  
+| 3. Config Management for Microservices |     |  
+| 4. Backing services for Microservices |     |  
+| 5. Build, release, run for Microservices |     |  
+| 6. Processes for for Microservices|     |  
+| 7. Port binding for Microservices|     |  
+| 8. Disposability for Microservices|     |  
+| 9. Dev/prod parity in Microservices|     |  
+| 10 Logs Management for Microservices|     |  
 
 
 ## Module 02 [Nov 2023]
