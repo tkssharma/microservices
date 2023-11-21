@@ -1,7 +1,7 @@
 # microservices
 Playlist covering all about Node JS Microservices 🚀🚀
 
-## Module 01 [Nov 2023]
+## Module 01 [Nov 2023] Express Typescript
 
 
 | Item              | Video |
@@ -17,14 +17,35 @@ Playlist covering all about Node JS Microservices 🚀🚀
 | Building RestFul API Microservice using Express Typescript #09  |  | 
 
 
-## Module 01.1 [Nov 2023]
+## Module 2.1 [Nov 2023] Express Typescript
 
 
 | Item              | Video |
 | :---------------- | :------: | 
-| Building Microservices with The Twelve-Factor App  |     |  
-| 1. Github Branching and Deployment from monorepo Codebase |     |  
-| 2. Managing dependancies for Monorepo Microservices |     |  
+| Building Microservices with The Twelve-Factor App Express JS Typescript  |     |  
+| 2. Adding 12 Factor Principle for Express App | |
+| 3. Making Node JS App Production Ready ||
+| 4. Add all 12-factor principles to manage express app ||
+
+
+## Module 2.2 [Nov 2023] Nest JS Typescript
+
+
+| Item              | Video |
+| :---------------- | :------: | 
+| Building Microservices using Nest JS |     |  
+| 2. Managing dependencies for Monorepo Microservices Nest JS  |     |  
+| 3. Creating Controller and Services - Microservices Nest JS  |     |  
+| 4. Building Auth APIs Nest Serices |     |  
+
+## Module 2.3 [Nov 2023] Nest JS Typescript
+
+
+| Item              | Video |
+| :---------------- | :------: | 
+| Building Microservices with The Twelve-Factor App (Nest JS Typescript)  |     |  
+| 1. Github Branching and Deployment from Monorepo Codebase |     |  
+| 2. Managing dependencies for Monorepo Microservices |     |  
 | 3. Config Management for Microservices |     |  
 | 4. Backing services for Microservices |     |  
 | 5. Build, release, run for Microservices |     |  
@@ -35,7 +56,7 @@ Playlist covering all about Node JS Microservices 🚀🚀
 | 10 Logs Management for Microservices|     |  
 
 
-## Module 02 [Nov 2023]
+## Module 03 [Nov 2023]
 
 
 | Item              | Video |
@@ -43,14 +64,14 @@ Playlist covering all about Node JS Microservices 🚀🚀
 | Deploying services to AWS using AWS CDK   |     |  
 
 
-## Module 03 [Nov 2023]
+## Module 04 [Nov 2023]
 
 
 | Item              | Video |
 | :---------------- | :------: | 
 | Building Microservice using CQRS/Event Driven Arch  |     |  
 
-## Module 04 [Nov 2023]
+## Module 05 [Nov 2023]
 
 
 | Item              | Video |
