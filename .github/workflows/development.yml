@@ -1,4 +1,4 @@
-name: checking workflow
+name: Checks
 
 on:
   push:
@@ -6,17 +6,26 @@ on:
       - main
 
 jobs:
-  deploy:
+  cache-and-install:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v1
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 14.x
-      - name: Setup and run tests
-        run: |
-          pnpm install
-          pnpm run build
+          node-version: 16
+
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: run build
+        run: pnpm run build
