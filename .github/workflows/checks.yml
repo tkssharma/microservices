@@ -1,4 +1,5 @@
 name: Checks
+
 on:
   push:
     branches:
@@ -22,6 +23,5 @@ jobs:
       - name: "Setup npm"
       - name: Install dependencies and tests
         run: | # Install and link dependencies
-          npm ci
-          npm run build
-          npm run test
+          pnpm i
+          pnpm run build

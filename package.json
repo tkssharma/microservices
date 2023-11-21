@@ -7,6 +7,7 @@
     "check-engines": "node node_modules/fbjs-scripts/node/check-dev-engines.js package.json",
     "lint": "node node_modules/prettier/bin-prettier --check \"**/*.{js,json,ts,yml,yaml}\"",
     "prepare": "husky install",
+    "build": "pnpm -r build",
     "prettier": "node node_modules/prettier/bin-prettier --check '**/*.{js,json,ts,yml,yaml}'",
     "prettier:write": "node node_modules/prettier/bin-prettier --write \"**/*.{js,json,ts,yml,yaml}\""
   },
