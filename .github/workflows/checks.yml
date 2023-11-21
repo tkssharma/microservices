@@ -1,5 +1,4 @@
 name: Checks
-
 on:
   push:
     branches:
@@ -20,14 +19,9 @@ jobs:
         with:
           node-version: "14"
 
+      - name: "Setup npm"
       - name: Install dependencies and tests
         run: | # Install and link dependencies
           npm ci
-
-      - name: build code
-        run: | # Install and link dependencies
           npm run build
-
-       - name: run tests
-         run: | # Install and link dependencies
           npm run test
