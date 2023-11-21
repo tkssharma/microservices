@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module":"NodeNext",
+    "module": "NodeNext",
     "moduleResolution": "node",
     "baseUrl": "src",
     "outDir": "dist",
@@ -8,5 +8,5 @@
     "noImplicitAny": true
   },
   "include": ["src/**/*"],
-  "exclude": ["dist","node_modules","tests"]
+  "exclude": ["dist", "node_modules", "tests"]
 }

@@ -17,4 +17,4 @@ services:
     ports:
       - 5432:5432
 volumes:
-  test_api_data: {}      
+  test_api_data: {}

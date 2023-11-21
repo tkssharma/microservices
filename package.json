@@ -8,6 +8,7 @@
     "lint": "node node_modules/prettier/bin-prettier --check \"**/*.{js,json,ts,yml,yaml}\"",
     "prepare": "husky install",
     "build": "pnpm -r build",
+    "test": "pnpm -r test",
     "prettier": "node node_modules/prettier/bin-prettier --check '**/*.{js,json,ts,yml,yaml}'",
     "prettier:write": "node node_modules/prettier/bin-prettier --write \"**/*.{js,json,ts,yml,yaml}\""
   },

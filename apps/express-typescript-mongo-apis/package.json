@@ -5,8 +5,8 @@
   "main": "src/server.ts",
   "scripts": {
     "test": "jest",
-    "dev:watch":"nodemon",
-    "dev":"ts-jest ./src/server.ts"
+    "dev:watch": "nodemon",
+    "dev": "ts-jest ./src/server.ts"
   },
   "keywords": [],
   "author": "",

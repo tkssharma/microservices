@@ -23,7 +23,7 @@
     "@dev/config": "*",
     "@dev/http": "*",
     "@dev/email": "*",
-    "@dev/logger":"*",
+    "@dev/logger": "*",
     "@dev/database": "*",
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
