@@ -22,7 +22,6 @@
   "homepage": "https://github.com/ChechaValerii/node-typescript-mongodb#readme",
   "scripts": {
     "lint": "node node_modules/prettier/bin-prettier --check \"**/*.{js,json,ts,yml,yaml}\"",
-    "prepare": "husky install",
     "prettier": "node node_modules/prettier/bin-prettier --check '**/*.{js,json,ts,yml,yaml}'",
     "prettier:write": "node node_modules/prettier/bin-prettier --write \"**/*.{js,json,ts,yml,yaml}\"",
     "build": "tsc --skipLibCheck",
@@ -79,7 +78,6 @@
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "husky": "^7.0.4",
     "jest": "^27.4.7",
     "jsdoc": "3.6.7",
     "nodemon": "2.0.15",
