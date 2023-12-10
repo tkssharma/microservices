@@ -6,6 +6,7 @@ import CreatePostDto from "./post.dto";
 import RequestWithUser from "../interfaces/req.user";
 import userModel from "../user/user.model";
 import authMiddleware from "../middleware/auth.middleware";
+import { logger } from "../logging/logger";
 
 class PostController implements Controller {
   public path = "/posts";
@@ -43,6 +44,7 @@ class PostController implements Controller {
     res: Response,
     next: NextFunction
   ) => {
+    logger.info(req.params);
     const id = req.params.id;
     const post = await this.post.findById(id);
     if (post) {
@@ -57,6 +59,7 @@ class PostController implements Controller {
     res: Response,
     next: NextFunction
   ) => {
+    logger.info(req.body);
     const id = req.params.id;
     const postData: any = req.body;
     const post = await this.post.findByIdAndUpdate(id, postData, { new: true });

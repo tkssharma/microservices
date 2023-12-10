@@ -3,7 +3,21 @@ import * as cookieParser from "cookie-parser";
 import * as express from "express";
 import errorMiddleware from "./middleware/error.middleware";
 import * as mongoose from "mongoose";
+import { logger } from "./logging/logger";
 const bodyParser = require("body-parser");
+const winston = require("winston");
+const morgan = require("morgan");
+
+const { combine, timestamp, json } = winston.format;
+
+const morganMiddleware = morgan(
+  ":method :url :status :res[content-length] - :response-time ms",
+  {
+    stream: {
+      write: (message: string) => logger.http(message.trim()),
+    },
+  }
+);
 
 class App {
   public app: express.Application;
@@ -32,6 +46,7 @@ class App {
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: false }));
     this.app.use(cookieParser());
+    this.app.use(morganMiddleware);
   }
   private initializeControllers(controllers: Controller[]) {
     controllers.forEach((controller) => {

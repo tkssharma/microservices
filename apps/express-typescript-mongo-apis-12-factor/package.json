@@ -9,7 +9,8 @@
     "test": "jest --passWithNoTests",
     "build": "tsc",
     "dev:watch": "nodemon",
-    "dev": "ts-jest ./src/server.ts"
+    "pm2:start": "pm2 start ecosystem.config.js",
+    "dev": "NODE_ENV=${NODE_ENV:-development}  ts-node ./src/server.ts"
   },
   "keywords": [],
   "author": "",
@@ -24,7 +25,9 @@
     "envalid": "^6.0.1",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.9"
+    "mongoose": "^5.11.9",
+    "pm2": "^5.3.0",
+    "winston": "^3.8.2"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
