@@ -1,0 +1,17 @@
+packages/**/build
+packages/**/coverage
+packages/**/node_modules
+packages/**/pnpm-lock.yaml
+packages/**/package-lock.json
+packages/events/schemas
+packages/events-catalog/.eventcatalog-core
+packages/events-catalog/.generated-docs
+packages/events-catalog/.generated-docs-html
+packages/events-catalog/schemas
+packages/events-catalog/out
+packages/**/cdk.out
+pnpm-workspace.yaml
+pnpm-lock.yaml
+package-lock.json
+.vscode
+.husky
