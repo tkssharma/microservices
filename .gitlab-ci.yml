@@ -1,18 +1,75 @@
 stages:
-  # 3 DIFFERENT STAGES
   - build
-build:
+  - test
+  - deploy
+
+variables:
+  RULE_CHANGES_PATH: "**/*"
+
+.base-rules:
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: always
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+      when: never  
+    - if: $CI_COMMIT_TAG
+      when: never 
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      changes:
+        - $RULES_CHANGES_PATH 
+    - when: manual
+      allow_failure: true  
+
+.backend:
+  extends: .base-rules
+  variables:
+    RULE_CHANGES_PATH: "**/*"
+
+.frontend:
+  extends: .base-rules
+  variables:
+    RULE_CHANGES_PATH: "**/*"
+
+backend-build:
   stage: build
-  image: node:16.18.0
-  before_script:
-    - corepack enable
-    - corepack prepare pnpm@latest-8 --activate
-    - pnpm config set store-dir .pnpm-store
+  extends: .backend
+  needs: []
   script:
-    - pnpm install # install dependencies
-  cache:
-    key:
-      files:
-        - pnpm-lock.yaml
-    paths:
-      - .pnpm-store
+    - echo "Compiling the backend code..."
+
+frontend-build:
+  stage: build
+  extends: .frontend
+  needs: []
+  script:
+    - echo "Compiling the frontend code..."
+
+backend-test:
+  stage: test
+  extends: .backend
+  needs: ["backend-build"]
+  script:
+    - echo "Testing the backend code..."
+
+frontend-test:
+  stage: test
+  extends: .frontend
+  needs: ["frontend-build"]
+  script:
+    - echo "Testing the frontend code..."
+
+backend-deploy:
+  stage: deploy
+  extends: .backend
+  needs: ["backend-test"]
+  script:
+    - echo "Deploying the backend code..."
+
+frontend-deploy:
+  stage: deploy
+  extends: .frontend
+  needs: ["frontend-test"]
+  script:
+    - echo "Deploying the frontend code..."
+
+
