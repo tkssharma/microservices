@@ -1,6 +1,6 @@
 import * as bcrypt from "bcrypt";
 import * as crypto from "crypto";
-import { Document, Schema } from "mongoose";
+import * as mongoose from "mongoose";
 import { NextFunction } from "express";
 import * as connections from "../../config/connection/connection";
 
@@ -14,7 +14,7 @@ export type AuthToken = {
  * @interface IUserModel
  * @extends {Document}
  */
-export interface IUserModel extends Document {
+export interface IUserModel extends mongoose.Document {
   email: string;
   password: string;
   passwordResetToken: string;
@@ -63,7 +63,7 @@ export interface IUserModel extends Document {
  *      items:
  *        $ref: '#/components/schemas/UserSchema'
  */
-const UserSchema: Schema = new Schema(
+const UserSchema: mongoose.Schema = new mongoose.Schema(
   {
     email: {
       type: String,
@@ -80,7 +80,7 @@ const UserSchema: Schema = new Schema(
     versionKey: false,
   }
 ).pre("save", async function (next: NextFunction): Promise<void> {
-  const user: IUserModel = this; // tslint:disable-line
+  const user: any = this; // tslint:disable-line
 
   if (!user.isModified("password")) {
     return next();

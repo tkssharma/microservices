@@ -54,10 +54,7 @@ class App {
     });
   }
   private connectToDatabase() {
-    mongoose.connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    mongoose.connect(process.env.MONGO_URL);
   }
 }
 
