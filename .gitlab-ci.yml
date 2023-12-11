@@ -20,7 +20,7 @@ workflow:
     - if: '$CI_PIPELINE_SOURCE == "push"'
       when: always
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-      when: always 
+      when: always
 
 .dependencies_cache:
   cache:
@@ -28,11 +28,11 @@ workflow:
       files:
         - pnpm-lock.yml
     paths:
-        - .npm
-        - .pnpm-store
-        - node_modules
-        - 'packages/*/node_modules'
-        - 'packages/*/.npm'    
+      - .npm
+      - .pnpm-store
+      - node_modules
+      - "packages/*/node_modules"
+      - "packages/*/.npm"
     policy: pull
     when: on_success
 
@@ -57,6 +57,4 @@ build-all:
       - packages/**/*
     expire_in: 1h
   allow_failure: false
-  when: on_success     
-
-
+  when: on_success
