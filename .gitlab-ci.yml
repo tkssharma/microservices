@@ -43,6 +43,8 @@ variables:
       - node_modules
       - "packages/*/node_modules"
       - "packages/*/.npm"
+      - "apps/*/node_modules"
+      - "apps/*/.npm"
     policy: pull
 
 # cache node_modules across pipelines based on "pnpm-lock.yaml"
