@@ -7,7 +7,6 @@
     "build": "tsc",
     "check-engines": "node ../../node_modules/fbjs-scripts/node/check-dev-engines.js package.json",
     "clean": "rimraf build && rimraf coverage",
-    "prebuild": "npm run clean && npm run check-engines",
     "prepublishOnly": "npm run build",
     "pretest": "npm run build",
     "test": "npm run test:ci",
