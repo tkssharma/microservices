@@ -1,73 +1,62 @@
+default:
+  interruptible: true
+  image: node:16.13.2-alpine
+  before_script:
+    - npm i -g pnpm@6.x
+    - pnpm config set store-dir .pnpm-store
+    - apk add bash
+
 stages:
+  - setup
   - build
   - test
-  - deploy
+  - deploy_dev
+  - deploy_prod
 
-variables:
-  RULES_CHANGES_PATH: "**/*"
-
-.base-rules:
+workflow:
   rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-      when: always
-    - if: '$CI_PIPELINE_SOURCE == "push"'
-      when: never
     - if: $CI_COMMIT_TAG
       when: never
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-      changes:
-        - $RULES_CHANGES_PATH
-    - when: manual
-      allow_failure: true
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+      when: always
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: always 
 
-.backend:
-  extends: .base-rules
-  variables:
-    RULES_CHANGES_PATH: "apps/express-typescript-apis/**/*"
+.dependencies_cache:
+  cache:
+    key:
+      files:
+        - pnpm-lock.yml
+    paths:
+        - .npm
+        - .pnpm-store
+        - node_modules
+        - 'packages/*/node_modules'
+        - 'packages/*/.npm'    
+    policy: pull
+    when: on_success
 
-.frontend:
-  extends: .base-rules
-  variables:
-    RULES_CHANGES_PATH: "frontend/**/*"
+setup:
+  stage: setup
+  script:
+    - pnpm i --ignore-scripts
+  extends: .dependencies_cache
+  allow_failure: false
+  cache:
+    policy: pull-push
 
-backend-build:
+build-all:
   stage: build
-  extends: .backend
-  needs: []
   script:
-    - echo "Compiling the backend code..."
+    - pnpm run build
+  needs:
+    - setup
+  extends: .dependencies_cache
+  artifacts:
+    paths:
+      - packages/**/*
+    expire_in: 1h
+  allow_failure: false
+  when: on_success     
 
-frontend-build:
-  stage: build
-  extends: .frontend
-  needs: []
-  script:
-    - echo "Compiling the frontend code..."
 
-backend-test:
-  stage: test
-  extends: .backend
-  needs: ["backend-build"]
-  script:
-    - echo "Testing the backend code..."
-
-frontend-test:
-  stage: test
-  extends: .frontend
-  needs: ["frontend-build"]
-  script:
-    - echo "Testing the frontend code..."
-
-backend-deploy:
-  stage: deploy
-  extends: .backend
-  needs: ["backend-test"]
-  script:
-    - echo "Deploying the backend code..."
-
-frontend-deploy:
-  stage: deploy
-  extends: .frontend
-  needs: ["frontend-test"]
-  script:
-    - echo "Deploying the frontend code..."
