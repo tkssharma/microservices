@@ -1,6 +1,6 @@
 default:
-  interruptible: true
   image: node:16.13.2-alpine
+  interruptible: true
   before_script:
     - npm i -g pnpm@6.x
     - pnpm config set store-dir .pnpm-store
@@ -10,51 +10,60 @@ stages:
   - setup
   - build
   - test
-  - deploy_dev
-  - deploy_prod
+  - release
+  - staging
+  - production
 
 workflow:
   rules:
+    - if: $CI_COMMIT_MESSAGE =~ /^chore\(release\)\:.+$/
+      when: never
+    - if: $CI_COMMIT_MESSAGE =~ /^chore\:.+$/
+      when: never
+    - if: $CI_COMMIT_MESSAGE =~ /^docs\:.+$/
+      when: never
     - if: $CI_COMMIT_TAG
       when: never
     - if: '$CI_PIPELINE_SOURCE == "push"'
       when: always
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-      when: always
+
+# Set branch-based environment variables -- shared for all jobs
+variables:
+  NODE_ENV: CI
+  GL_TOKEN: ${CI_GIT_USER_PERSONAL_ACCESS_TOKEN}
 
 .dependencies_cache:
   cache:
     key:
       files:
-        - pnpm-lock.yml
+        - pnpm-lock.yaml
+        - packages/events-catalog/package-lock.json
     paths:
       - .npm
       - .pnpm-store
       - node_modules
-      - "packages/*/node_modules"
-      - "packages/*/.npm"
+      - 'packages/*/node_modules'
+      - 'packages/*/.npm'
     policy: pull
-    when: on_success
 
+# cache node_modules across pipelines based on "pnpm-lock.yaml"
 setup:
   stage: setup
   script:
     - pnpm i --ignore-scripts
+    - pnpm run prettier
   extends: .dependencies_cache
   allow_failure: false
   cache:
     policy: pull-push
 
+# CI -- continuous integration via build + tests
 build-all:
   stage: build
   script:
-    - pnpm run build
+    # build: libs, apis and lambdas
+    - npm run build
+  extends: .dependencies_cache
   needs:
     - setup
-  extends: .dependencies_cache
-  artifacts:
-    paths:
-      - packages/**/*
-    expire_in: 1h
-  allow_failure: false
   when: on_success
