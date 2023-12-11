@@ -37,7 +37,6 @@ variables:
     key:
       files:
         - pnpm-lock.yaml
-        - packages/events-catalog/package-lock.json
     paths:
       - .npm
       - .pnpm-store
