@@ -1,5 +1,5 @@
 default:
-  image: node:16.13.2-alpine
+  image: node:16.18.0-alpine
   interruptible: true
   before_script:
     - npm i -g pnpm@6.x
