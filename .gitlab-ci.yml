@@ -23,12 +23,12 @@ variables:
 .backend:
   extends: .base-rules
   variables:
-    RULE_CHANGES_PATH: "**/*"
+    RULE_CHANGES_PATH: "apps/express-typescript-apis/**/*"
 
 .frontend:
   extends: .base-rules
   variables:
-    RULE_CHANGES_PATH: "**/*"
+    RULE_CHANGES_PATH: "apps/react-dashboard/**/*"
 
 backend-build:
   stage: build
